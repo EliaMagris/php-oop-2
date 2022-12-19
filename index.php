@@ -31,13 +31,11 @@ include_once __DIR__ . '/assets/giocattoli.php';
         'gatto' => new Generi('gatto', 'fa-solid fa-cat')
     ];
 
-    var_dump($category);
-
     $prodotti = [
         new Cibo('https://cdn.royalcanin-weshare-online.io/v2k6a2QBG95Xk-RBN9oV/v196/packshot-mini-ad-shn17', 'Royal Canin', 43.99, $category['cane'], 545, 'prosciutto, riso'),
         new Cibo('https://shop-cdn-m.mediazs.com/bilder/almo/nature/holistic/medium/adult/con/manzo/fresco/5/800/68015_pla_almo_nature_holistic_adult_rind_reis_medium_746_12kg_dog_5.jpg', 'Almo Nature', 44.99, $category['cane'], 600, 'manzo, cereali'),
-        new Accessori('https://static.bighunter.net/foto/1_Def_per_web_zoom/14089/14089.jpg', 'Voliera Ferplast Bella Casa', 184.99, $category['uccello'], 'legno', 'M: L83 x P67 x H153 cm '),
-        new Giocattoli('https://i.ebayimg.com/images/g/03kAAOSwA4BbK4Gm/s-l500.jpg', 'Topini di Peluche Trixie', 4.99, $category['gatto'], 'Morbido con codina in corda', '8.5 cm x 10 cm')
+        new Accessori('https://static.bighunter.net/foto/1_Def_per_web_zoom/14089/14089.jpg', 'Voliera Ferplast', 184.99, $category['uccello'], 'legno', 'M: L83 x P67 x H153 cm '),
+        new Giocattoli('https://i.ebayimg.com/images/g/03kAAOSwA4BbK4Gm/s-l500.jpg', 'Topini di Peluche', 4.99, $category['gatto'], 'Morbido e salutare', '8.5 cm x 10 cm')
     ];
     ?>
     <div class="container">
@@ -48,9 +46,9 @@ include_once __DIR__ . '/assets/giocattoli.php';
                 // Verifico se il prodotto appartiene alla categoria 'cane'
                 if ($data->category->nome == 'cane') {
             ?>
-            <div class="col-3">
+            <div class="col-3 mt-5">
                 <div class="card">
-                    <img src="<?php echo $data->immagine ?>" class="card-img-top" alt="...">
+                    <img class="progress" style="height: 304px;" src="<?php echo $data->immagine ?>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h4 class="card-title text-uppercase">
                             <?php echo $data->nome ?>
@@ -84,9 +82,9 @@ include_once __DIR__ . '/assets/giocattoli.php';
 
                 if ($data->category->nome == 'uccello') {
             ?>
-            <div class="col-3">
+            <div class="col-3 mt-5">
                 <div class="card">
-                    <img src="<?php echo $data->immagine ?>" class="card-img-top" alt="...">
+                    <img class="progress" style="height: 304px;" src="<?php echo $data->immagine ?>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h4 class="card-title text-uppercase">
                             <?php echo $data->nome ?>
@@ -120,9 +118,9 @@ include_once __DIR__ . '/assets/giocattoli.php';
 
                 if ($data->category->nome == 'gatto') {
             ?>
-            <div class="col-3">
+            <div class="col-3 mt-5">
                 <div class="card">
-                    <img src="<?php echo $data->immagine ?>" class="card-img-top" alt="...">
+                    <img class="progress" style="height: 304px;" src="<?php echo $data->immagine ?>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h4 class="card-title text-uppercase">
                             <?php echo $data->nome ?>
