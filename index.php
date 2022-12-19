@@ -17,18 +17,18 @@ include_once __DIR__ . '/assets/giocattoli.php';
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css' rel='stylesheet'
         integrity='sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi' crossorigin='anonymous'>
     <!-- FONTAWESOME LINK-->
-    <link rel='stylesheet'
-        href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css%27integrity=%27sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=='
-        crossorigin='anonymous' referrerpolicy='no-referrer'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
 <body>
     <?php
     $category = [
-        'cane' => new Generi('cane', '<i class="fa-solid fa-dog"></i>'),
-        'uccello' => new Generi('uccello', '<i class="fa-solid fa-dove"></i>'),
-        'gatto' => new Generi('gatto', '<i class="fa-solid fa-cat"></i>')
+        'cane' => new Generi('cane', 'fa-solid fa-dog'),
+        'uccello' => new Generi('uccello', 'fa-solid fa-dove'),
+        'gatto' => new Generi('gatto', 'fa-solid fa-cat')
     ];
 
     var_dump($category);
@@ -42,35 +42,120 @@ include_once __DIR__ . '/assets/giocattoli.php';
     ?>
     <div class="container">
         <div class="row">
-
-            <?php foreach ($prodotti as $data) { ?>
+            <?php
+            // Ciclo per scorrere l'array $prodotti
+            foreach ($prodotti as $data) {
+                // Verifico se il prodotto appartiene alla categoria 'cane'
+                if ($data->category->nome == 'cane') {
+            ?>
             <div class="col-3">
-                <div class="card  ">
+                <div class="card">
                     <img src="<?php echo $data->immagine ?>" class="card-img-top" alt="...">
-                    <div class="card-body ">
+                    <div class="card-body">
                         <h4 class="card-title text-uppercase">
                             <?php echo $data->nome ?>
                         </h4>
-                        <h5 class="card-title opacity-50">
-                            <?php echo $data->prezzo ?>
+                        <h6 class="card-title text-uppercase">
+                            <?php echo $data->category->nome ?>
+                            <i class="<?php echo $data->category->icona ?>"></i>
+                        </h6>
+                        <h5 class="card-title opacity-75">
+                            <?php echo $data->prezzo ?> $
                         </h5>
-                        <p class="card-text opacity-50">
-                            <?php foreach ($category as $type) {
-                    echo $type->nome;
-                } ?>
+                        <p class="card-text opacity-75">
+                            peso netto:
+                            <?php echo $data->peso ?> g
+                        </p>
+                        <p class="card-text opacity-75">
+                            ingredienti:
+                            <?php echo $data->ingredienti ?>
                         </p>
                     </div>
                 </div>
             </div>
-            <?php } ?>
+            <?php
+                }
+            }
+            ?>
 
+            <?php
 
+            foreach ($prodotti as $data) {
+
+                if ($data->category->nome == 'uccello') {
+            ?>
+            <div class="col-3">
+                <div class="card">
+                    <img src="<?php echo $data->immagine ?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title text-uppercase">
+                            <?php echo $data->nome ?>
+                        </h4>
+                        <h6 class="card-title text-uppercase">
+                            <?php echo $data->category->nome ?>
+                            <i class="<?php echo $data->category->icona ?>"></i>
+                        </h6>
+                        <h5 class="card-title opacity-75">
+                            <?php echo $data->prezzo ?> $
+                        </h5>
+                        <p class="card-text opacity-75">
+                            Materiale:
+                            <?php echo $data->materiale ?>
+                        </p>
+                        <p class="card-text opacity-75">
+                            Dimensioni:
+                            <?php echo $data->dimensioni ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <?php
+                }
+            }
+            ?>
+
+            <?php
+
+            foreach ($prodotti as $data) {
+
+                if ($data->category->nome == 'gatto') {
+            ?>
+            <div class="col-3">
+                <div class="card">
+                    <img src="<?php echo $data->immagine ?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title text-uppercase">
+                            <?php echo $data->nome ?>
+                        </h4>
+                        <h6 class="card-title text-uppercase">
+                            <?php echo $data->category->nome ?> 
+                            <i class="<?php echo $data->category->icona ?>"></i>
+                        </h6>
+                        <h5 class="card-title opacity-75">
+                            <?php echo $data->prezzo ?> $
+                        </h5>
+                        <p class="card-text opacity-75">
+                            caratteristiche:
+                            <?php echo $data->caratteristiche ?>
+                        </p>
+                        <p class="card-text opacity-75">
+                            Dimensioni:
+                            <?php echo $data->dimensioni ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <?php
+                }
+            }
+            ?>
         </div>
+    </div>
 
-        <!-- BOOTSTRAP JAVASCRIPT LINK-->
-        <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js'
-            integrity='sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3'
-            crossorigin='anonymous'></script>
+    <!-- BOOTSTRAP JAVASCRIPT LINK-->
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js'
+        integrity='sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3'
+        crossorigin='anonymous'></script>
 
 </body>
 
